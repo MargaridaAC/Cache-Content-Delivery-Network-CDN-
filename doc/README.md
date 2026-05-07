@@ -20,6 +20,10 @@ descarrega novos ficheiros da origem.
 CLIENTE <--> CACHE <--> SERVIDOR ORIGINAL
 
 
+PLANO:
+-iniciar projeto em grupo
+-dividir tarefas e manter reuniões frequentes
+
 
 DECISÕES:
 - FAST-API - cdn (usamos em IES)

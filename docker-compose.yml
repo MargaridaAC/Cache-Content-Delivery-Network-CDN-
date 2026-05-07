@@ -1,0 +1,27 @@
+services:
+  # Servidor Original
+  origin:
+    build: 
+      context: ./origin
+    container_name: origin_server
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mapeamos o código e os dados locais para dentro do contentor para facilitar o desenvolvimento
+      - ./origin:/app
+
+  # Nó de Cache da CDN
+  cdn:
+    build: 
+      context: ./cdn
+    container_name: cdn_node
+    ports:
+      # Expomos a CDN na porta 8080 para não entrar em conflito com o servidor de origem
+      - "8080:8000"
+    volumes:
+      # O armazenamento persistente (cache_storage) vai estar mapeado aqui
+      - ./cdn:/app
+    environment:
+      - ORIGIN_URL=http://origin:8000
+    depends_on:
+      - origin
