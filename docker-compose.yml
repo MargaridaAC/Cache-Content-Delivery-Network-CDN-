@@ -3,6 +3,7 @@ services:
   origin:
     build: 
       context: ./origin
+    image: origin_app:latest
     container_name: origin_server
     ports:
       - "8000:8000"
@@ -14,6 +15,7 @@ services:
   cdn:
     build: 
       context: ./cdn
+    image: origin_app:latest
     container_name: cdn_node
     ports:
       # Expomos a CDN na porta 8080 para não entrar em conflito com o servidor de origem
