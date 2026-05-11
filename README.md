@@ -20,3 +20,25 @@ apaga a sua cópia local imediatamente para evitar servir dados obsoletos.
 descarrega novos ficheiros da origem.
 
 CLIENTE <--> CACHE <--> SERVIDOR ORIGINAL
+
+DECISÕES:
+- FAST-API - framework da cdn, gere os pedidos HTTP dos clientes (usamos em IES)
+- aiofiles - gestão de cache, responsavel pela persistencia de dados no dsico da CDN após um cache miss (recomendado no guiao do projeto)
+- MQTT - mecanismo de purge (demos na aula)
+- py - linguagem base (professor recomendou)
+- httpx - cliente HTTP assíncrono usado pela cdn para solicitar ficheiros à origem (API)
+
+ARQUITETURA REPOSITÓRIO:
+
+├── docker-compose.yml       # Orquestração de toda a rede (Origem, CDN, Cliente) 
+├── origin/ 
+│   ├── Dockerfile           # Imagem para o servidor de origem 
+│   ├── main.py              # Servidor HTTP com os ficheiros originais 
+│   └── data/                # Ficheiros que a CDN vai buscar 
+├── cdn/ 
+│   ├── Dockerfile           # Imagem para o nó de cache 
+│   ├── main.py              # Lógica da CDN (Cache Hit/Miss + MQTT) 
+│   └── cache_storage/       # Volume persistente para os ficheiros guardados 
+├── common/ 
+│   └── protocol.py          # Definição de mensagens/formatos (Opcional)
+└── tests/                   # Scripts de teste (baseados no guião 08) 
