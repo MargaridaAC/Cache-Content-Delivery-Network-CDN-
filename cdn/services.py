@@ -9,7 +9,7 @@ ORIGIN_URL = os.getenv("ORIGIN_URL", "http://localhost:8000")
 os.makedirs(CACHE_DIR, exist_ok=True)
 
 async def get_from_cache(filename: str):
-    """Verifica se o ficheiro existe localmente."""
+    # Verifica se o ficheiro existe localmente
     file_path = os.path.join(CACHE_DIR, filename)
     if os.path.exists(file_path):
         return file_path
@@ -17,7 +17,7 @@ async def get_from_cache(filename: str):
 
 # Esta função pode ser melhorada usando streaming para ficheiros grandes
 async def fetch_from_origin(filename: str):
-    """Vai buscar à origem e guarda no disco assincronamente."""
+    # Vai buscar à origem e guarda no disco assincronamente
     target_path = os.path.join(CACHE_DIR, filename)
     
     async with httpx.AsyncClient() as client:
