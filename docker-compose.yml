@@ -10,20 +10,33 @@ services:
     volumes:
       # Mapeamos o código e os dados locais para dentro do contentor para facilitar o desenvolvimento
       - ./origin:/app
+    environment:
+      - MQTT_BROKER_URL=mqtt-broker
 
   # Nó de Cache da CDN
   cdn:
     build: 
       context: ./cdn
-    image: origin_app:latest
+    image: cdn_app:latest
     container_name: cdn_node
     ports:
-      # Expomos a CDN na porta 8080 para não entrar em conflito com o servidor de origem
-      - "8080:8000"
+      # Expomos a CDN na porta 8081 para não entrar em conflito com o servidor de origem ou outros apps
+      - "8081:8000"
     volumes:
       # O armazenamento persistente (cache_storage) vai estar mapeado aqui
       - ./cdn:/app
     environment:
       - ORIGIN_URL=http://origin:8000
+      - MQTT_BROKER_URL=mqtt-broker
     depends_on:
       - origin
+      - mqtt-broker
+
+  # MQTT Broker
+  mqtt-broker:
+    image: eclipse-mosquitto:latest
+    container_name: mqtt_broker
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf

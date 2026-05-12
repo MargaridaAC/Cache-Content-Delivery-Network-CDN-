@@ -1,2 +1,1 @@
-Este é um ficheiro de teste alojado no servidor original.
-Se a CDN funcionar, este conteúdo deve aparecer quando pedires o ficheiro.
+Este é o novo texto atualizado!

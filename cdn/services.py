@@ -15,6 +15,21 @@ async def get_from_cache(filename: str):
         return file_path
     return None
 
+def delete_from_cache(filename: str):
+    """
+    Remove o ficheiro da cache local, se existir.
+    """
+    file_path = os.path.join(CACHE_DIR, filename)
+    if os.path.exists(file_path):
+        try:
+            os.remove(file_path)
+            print(f"[PURGE] Ficheiro {filename} removido da cache com sucesso.")
+            return True
+        except Exception as e:
+            print(f"[ERRO] Erro ao tentar remover {filename} da cache: {e}")
+            return False
+    return False
+
 # Esta função pode ser melhorada usando streaming para ficheiros grandes
 async def fetch_from_origin(filename: str):
     # Vai buscar à origem e guarda no disco assincronamente
