@@ -1,0 +1,37 @@
+RELATÓRIO DE PERFORMANCE E MÉTRICAS CDN
+
+Criado em: 2026-05-18 00:07:23
+--------------------------------------------------------------
+
+ESTATÍSTICAS GERAIS DE TRÁFEGO
+    - Total de Pedidos Processados: 30
+    - Total de Cache HITs: 17 (56.7%)
+    - Total de Cache MISSes: 11 (36.7%)
+    - Total de Erros: 2 (6.7%)
+    - Taxa de Hit Global (HIT/MISS): 60.71%
+
+ANÁLISE DE LATÊNCIA (tempos de resposta)
+    - Latência Média de Cache HIT: 0.012 ms
+    [Mínimo: 0.010 ms | Máximo: 0.020 ms]
+    - Latência Média de Cache MISS: 16.468 ms
+    [Mínimo: 5.760 ms | Máximo: 51.400 ms]
+    - Latência Média em Erros: 6.105 ms
+    - Latência Média de Download (Origem): 16.451 ms
+--------------------------------------------------------------
+FATOR DE ACELERAÇÃO: 1333.1x MAIS RÁPIDO EM HIT!
+
+VOLUME E DADOS INTEGRADOS
+    - Total de Dados Servidos: 2.32 MB
+    - Tamanho Médio dos Ficheiros: 84.69 KB
+
+RANKING DE POPULARIDADE DE FICHEIROS
+Ficheiro                       | Pedidos  | HITs   | MISSes | Hit Rate
+   ----------------------------------------------------------------------
+imagem_background.png          | 8        | 6      | 2      | 75.0%
+base_dados.bin                 | 6        | 4      | 2      | 66.7%
+relatorio_anual.txt            | 6        | 3      | 3      | 50.0%
+pedido_dinamico_1.txt          | 2        | 1      | 1      | 50.0%
+pedido_dinamico_2.txt          | 2        | 1      | 1      | 50.0%
+ficheiro_inexistente.bin       | 2        | 0      | 0      | 0.0%
+pedido_dinamico_3.txt          | 2        | 1      | 1      | 50.0%
+pedido_dinamico_4.txt          | 2        | 1      | 1      | 50.0%
